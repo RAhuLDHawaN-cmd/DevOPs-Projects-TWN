@@ -1,0 +1,60 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '4.1.0'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example'
+version = '1.0-SNAPSHOT'
+
+apply plugin: 'maven-publish'
+
+publishing {
+    publications { // what do we want to publish
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+
+    repositories { // where do we want to publish to, chnage to ipv4:port
+        maven {
+            name 'nexus'
+            def releasesRepoUrl = 'http://139.59.136.189:8081/repository/maven-releases/'
+            def snapshotsRepoUrl = 'http://165.227.57.47:8081/repository/maven-snapshots/'
+
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+
+            allowInsecureProtocol = true       // because we use http
+
+            credentials {
+                username project.repoUser      // to be defined in gradle.properties
+                password project.repoPassword  // to be defined in gradle.properties
+            }
+        }
+    }
+}
+
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+    maven { url 'https://repo.spring.io/snapshot' }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'net.logstash.logback:logstash-logback-encoder:9.0'
+    implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'
+    implementation "org.mongodb:mongodb-driver-sync:5.8.0"
+    testImplementation 'org.junit.jupiter:junit-jupiter:6.1.0'
+}
+
+test {
+    useJUnitPlatform()
+}

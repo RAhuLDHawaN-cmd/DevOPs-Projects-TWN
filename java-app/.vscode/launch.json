@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch JavaApp",
+            "request": "launch",
+            "mainClass": "com.example.App",
+            "projectName": "java-app",
+            "preLaunchTask": "Gradle: compile Java app"
+        }
+    ]
+}

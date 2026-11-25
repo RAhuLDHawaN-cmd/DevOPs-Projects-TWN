@@ -1,0 +1,13 @@
+# Local operating system and IDE state
+.DS_Store
+**/.DS_Store
+**/.idea/workspace.xml
+
+# Build output and dependency caches
+**/.gradle/
+**/build/
+**/target/
+**/node_modules/
+
+# Local repository credentials
+**/gradle.properties
