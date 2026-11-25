@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="java-maven-app" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="java-app" target="21" />
+      <module name="java-app.main" target="21" />
+      <module name="java-app.test" target="21" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="java-app" options="-parameters" />
+      <module name="java-app.main" options="-parameters" />
+      <module name="java-app.test" options="-parameters" />
+      <module name="java-react-example-master" options="-parameters" />
+      <module name="java-react-example-master.main" options="-parameters" />
+      <module name="java-react-example-master.test" options="-parameters" />
+      <module name="myjava-app" options="-parameters" />
+      <module name="myjava-app.main" options="-parameters" />
+      <module name="myjava-app.test" options="-parameters" />
+    </option>
+  </component>
+</project>
