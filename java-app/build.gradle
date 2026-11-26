@@ -12,7 +12,9 @@ apply plugin: 'maven-publish'
 publishing {
     publications { // what do we want to publish
         maven(MavenPublication) {
-            from components.java
+            artifact("build/libs/java-app-$version" + ".jar") {
+                extension 'jar'
+            }
         }
     }
 
@@ -20,7 +22,7 @@ publishing {
         maven {
             name 'nexus'
             def releasesRepoUrl = 'http://139.59.136.189:8081/repository/maven-releases/'
-            def snapshotsRepoUrl = 'http://165.227.57.47:8081/repository/maven-snapshots/'
+            def snapshotsRepoUrl = 'http://165.227.57.47:8081/repository/testmvnrepo/'
 
             url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
 
